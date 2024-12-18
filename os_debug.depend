@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1733153957 source:c:\users\santo\desktop\os_debug\access.cpp
+	"filesys.h"
+
+1734425458 c:\users\santo\desktop\os_debug\filesys.h
+	<stdio.h>
+	<string.h>
+	<malloc.h>
+	<stdlib.h>
+
+1733153957 source:c:\users\santo\desktop\os_debug\ballfre.cpp
+	<stdio.h>
+	"filesys.h"
+
+1733153957 source:c:\users\santo\desktop\os_debug\close.cpp
+	<stdio.h>
+	"filesys.h"
+
+1733825677 source:c:\users\santo\desktop\os_debug\creat.cpp
+	<stdio.h>
+	"filesys.h"
+
+1733153957 source:c:\users\santo\desktop\os_debug\delete.cpp
+	<stdio.h>
+	"filesys.h"
+
+1734425944 source:c:\users\santo\desktop\os_debug\dir.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1733816767 source:c:\users\santo\desktop\os_debug\format.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1733153910 source:c:\users\santo\desktop\os_debug\halt.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1733153910 source:c:\users\santo\desktop\os_debug\iallfre.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1733153910 source:c:\users\santo\desktop\os_debug\igetput.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"filesys.h"
+
+1734425433 source:c:\users\santo\desktop\os_debug\install.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1733153910 source:c:\users\santo\desktop\os_debug\log.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1734425294 source:c:\users\santo\desktop\os_debug\main.cpp
+	<stdio.h>
+	"filesys.h"
+
+1733821027 source:c:\users\santo\desktop\os_debug\name.cpp
+	<stdio.h>
+	<string.h>
+	"filesys.h"
+
+1734490196 source:c:\users\santo\desktop\os_debug\open.cpp
+	<stdio.h>
+	"filesys.h"
+
+1734488329 source:c:\users\santo\desktop\os_debug\rdwt.cpp
+	<stdio.h>
+	"filesys.h"
+
+1733826070 source:c:\users\santo\desktop\os_debug\shell.cpp
+	"filesys.h"
+
