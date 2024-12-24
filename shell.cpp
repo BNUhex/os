@@ -75,7 +75,7 @@ int shell(int user_id,char *str){
 		mode = DEFAULTMODE;
 		token = strtok(NULL,seps);
 		if(token != NULL){
-			sscanf(token,"%o",&mode);
+			sscanf(token,"%ho",&mode);
 		}
 		mode = mode|DIFILE|0700;
 		fd = creat(user_id,tstr,mode);
