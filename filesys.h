@@ -161,6 +161,10 @@ extern int             user_id;
 extern char            disk[(DINODEBLK+FILEBLK+2)*BLOCKSIZ];
 extern char            cur_path_name[DIRSIZ]; // bug04：fix：当前目录名，默认为根目录
 
+// function03
+extern char* address[200];
+extern int p_address;
+
 // all functions
 extern struct        inode *iget(unsigned int);
 extern void          iput(struct inode *);
