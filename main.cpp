@@ -73,7 +73,7 @@ int main(){
 
 	// bug：id不是2118的用户输入exit会报错
 	// fix：logout(2118) 改为 logout(username)
-	logout(2118);
+	logout(username);
 	halt();
 	return 0;
 }
