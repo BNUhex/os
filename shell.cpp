@@ -1,9 +1,9 @@
 #include "filesys.h"
-#define CLEN 10
-#define CNUM 10
+#define CLEN 10     // shellå‘½ä»¤åˆ—è¡¨é•¿åº¦
+#define CNUM 10     // shellå‘½ä»¤æœ€å¤§å­—ç¬¦ä¸²é•¿åº¦
 
 /*
-    ½âÎöÃüÁî£¬¸ù¾İÃüÁîÖ´ĞĞ²Ù×÷
+    è§£æå‘½ä»¤ï¼Œæ ¹æ®å‘½ä»¤æ‰§è¡Œæ“ä½œ
 */
 
 //enum ctype
@@ -15,7 +15,8 @@ char commands[CNUM][CLEN]={
 "mkfile",
 "del",
 "write",
-"read"
+"read",
+"who"       //function02_01ï¼šå¢åŠ æŸ¥çœ‹å½“å‰ç”¨æˆ·ä¿¡æ¯çš„åŠŸèƒ½
 };
 int getcid(char *command){
 	int i;
@@ -47,7 +48,7 @@ int shell(int user_id,char *str){
 	case 2:
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("mkdirÃüÁîµÄÕıÈ·¸ñÊ½Îªmkdir dirname£¬Çë¼ì²éÃüÁî!\n");
+			printf("mkdirå‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºmkdir dirnameï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		mkdir(token);
@@ -57,7 +58,7 @@ int shell(int user_id,char *str){
 	case 3:
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("cdÃüÁîµÄÕıÈ·¸ñÊ½Îªcd dirname£¬Çë¼ì²éÃüÁî!\n");
+			printf("cdå‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºcd dirnameï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		chdir(token);
@@ -67,7 +68,7 @@ int shell(int user_id,char *str){
 	case 4:
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("mkfile ÃüÁîµÄÕıÈ·¸ñÊ½Îªmkfile filename [mode]£¬Çë¼ì²éÃüÁî!\n");
+			printf("mkfile å‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºmkfile filename [mode]ï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		tstr =token;
@@ -78,11 +79,11 @@ int shell(int user_id,char *str){
 		}
 		mode = mode|DIFILE|0700;
 		fd = creat(user_id,tstr,mode);
-		// bug02.2£ºĞŞ¸ÄÁËcreatº¯ÊıµÄ·µ»ØµÄÍ¬Ê±Ò²Òª×¢ÒâÕâÀïunsigned shortĞÍ
-		//          ±äÁ¿fdÔÚÖ±½ÓºÍ-1±È½Ï
-		// fix02.2£º½«-1Ç¿ÖÆ×ª»»³Éunsigned shortÔÙºÍfd±È½Ï
+		// bug02.2ï¼šä¿®æ”¹äº†creatå‡½æ•°çš„è¿”å›çš„åŒæ—¶ä¹Ÿè¦æ³¨æ„è¿™é‡Œunsigned shortå‹
+		//          å˜é‡fdåœ¨ç›´æ¥å’Œ-1æ¯”è¾ƒ
+		// fix02.2ï¼šå°†-1å¼ºåˆ¶è½¬æ¢æˆunsigned shortå†å’Œfdæ¯”è¾ƒ
 		if(fd == (unsigned short)-1){
-			printf("´´½¨ÎÄ¼şÊ§°Ü£¡\n");
+			printf("åˆ›å»ºæ–‡ä»¶å¤±è´¥ï¼\n");
 			break;
 		}
 		close(user_id,fd);
@@ -92,7 +93,7 @@ int shell(int user_id,char *str){
 	case 5:
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("del ÃüÁîµÄÕıÈ·¸ñÊ½Îªdel filename£¬Çë¼ì²éÃüÁî!\n");
+			printf("del å‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºdel filenameï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		delete(token);
@@ -105,7 +106,7 @@ int shell(int user_id,char *str){
 		tstr = token;
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("write ÃüÁîµÄÕıÈ·¸ñÊ½Îªwrite filename bytes£¬Çë¼ì²éÃüÁî!\n");
+			printf("write å‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºwrite filename bytesï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		if(token[0] == '-'){
@@ -116,8 +117,8 @@ int shell(int user_id,char *str){
 		}
 		fd = open(user_id,tstr,char(mode));
 
-		// bug06_02£º¶ÁĞ´²»´æÔÚµÄÎÄ¼şÊ±³ÌĞò±ÀÀ£
-		// fix06_02£ºÔö¼Ó¶ÔÎÄ¼şÊÇ·ñ´ò¿ª³É¹¦µÄÅĞ¶Ï
+		// bug06_02ï¼šè¯»å†™ä¸å­˜åœ¨çš„æ–‡ä»¶æ—¶ç¨‹åºå´©æºƒ
+		// fix06_02ï¼šå¢åŠ å¯¹æ–‡ä»¶æ˜¯å¦æ‰“å¼€æˆåŠŸçš„åˆ¤æ–­
 		if (fd == (unsigned short)-1){
             break;
 		}
@@ -134,14 +135,14 @@ int shell(int user_id,char *str){
 		tstr = token;
 		token = strtok(NULL,seps);
 		if(token == NULL){
-			printf("read ÃüÁîµÄÕıÈ·¸ñÊ½Îªread filename bytes£¬Çë¼ì²éÃüÁî!\n");
+			printf("read å‘½ä»¤çš„æ­£ç¡®æ ¼å¼ä¸ºread filename bytesï¼Œè¯·æ£€æŸ¥å‘½ä»¤!\n");
 			break;
 		}
 		sscanf(token,"%d",&size);
 		fd = open(user_id,tstr,READ);
 
-		// bug06_03£º¶ÁĞ´²»´æÔÚµÄÎÄ¼şÊ±³ÌĞò±ÀÀ£
-		// fix06_03£ºÔö¼Ó¶ÔÎÄ¼şÊÇ·ñ´ò¿ª³É¹¦µÄÅĞ¶Ï
+		// bug06_03ï¼šè¯»å†™ä¸å­˜åœ¨çš„æ–‡ä»¶æ—¶ç¨‹åºå´©æºƒ
+		// fix06_03ï¼šå¢åŠ å¯¹æ–‡ä»¶æ˜¯å¦æ‰“å¼€æˆåŠŸçš„åˆ¤æ–­
 		if (fd == (unsigned short)-1){
             break;
 		}
@@ -152,13 +153,19 @@ int shell(int user_id,char *str){
 		close(user_id,fd);
 		break;
 
+    // who
+    case 8:
+        // function02_02ï¼šå¢åŠ æŸ¥çœ‹å½“å‰ç”¨æˆ·ä¿¡æ¯çš„åŠŸèƒ½
+        who(user_id);
+        break;
+
     // exit
 	case 0:
 		return 0;
 
     // default
 	default:
-		printf("´íÎó:Ã»ÓĞÃüÁî%s£¡\n",token);
+		printf("é”™è¯¯:æ²¡æœ‰å‘½ä»¤%sï¼\n",token);
 		break;
 	}
 	return 1;
